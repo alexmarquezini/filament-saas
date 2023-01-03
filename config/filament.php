@@ -328,6 +328,20 @@ return [
             DispatchServingFilamentEvent::class,
             MirrorConfigToSubpackages::class,
         ],
+        'tenant' => [
+            EncryptCookies::class,
+            AddQueuedCookiesToResponse::class,
+            StartSession::class,
+            AuthenticateSession::class,
+            ShareErrorsFromSession::class,
+            VerifyCsrfToken::class,
+            SubstituteBindings::class,
+            DispatchServingFilamentEvent::class,
+            MirrorConfigToSubpackages::class,
+            'web',
+            InitializeTenancyByDomain::class,
+            PreventAccessFromCentralDomains::class,
+        ],
     ],
 
 ];
