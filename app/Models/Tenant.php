@@ -13,4 +13,12 @@ class Tenant extends BaseTenant implements TenantWithDatabase
     use HasFactory;
     use HasDomains;
     use HasDatabase;
+
+    /**
+     * Relationship: User
+     */
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }
