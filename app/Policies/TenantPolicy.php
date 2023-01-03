@@ -18,7 +18,7 @@ class TenantPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->can('view_any_tenant');
     }
 
     /**
@@ -30,7 +30,7 @@ class TenantPolicy
      */
     public function view(User $user, Tenant $tenant)
     {
-        //
+        return $user->can('view_tenant') || $user->id === $tenant->user_id;
     }
 
     /**
@@ -41,7 +41,7 @@ class TenantPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->can('create_tenant');
     }
 
     /**
@@ -53,7 +53,7 @@ class TenantPolicy
      */
     public function update(User $user, Tenant $tenant)
     {
-        //
+        return $user->can('update_tenant') || $user->id === $tenant->user_id;
     }
 
     /**
@@ -65,7 +65,7 @@ class TenantPolicy
      */
     public function delete(User $user, Tenant $tenant)
     {
-        //
+        return $user->can('delete_tenant');
     }
 
     /**
@@ -77,7 +77,7 @@ class TenantPolicy
      */
     public function restore(User $user, Tenant $tenant)
     {
-        //
+        return $user->can('{{ Restore }}');
     }
 
     /**
@@ -89,6 +89,6 @@ class TenantPolicy
      */
     public function forceDelete(User $user, Tenant $tenant)
     {
-        //
+        return $user->can('{{ ForceDelete }}');
     }
 }
